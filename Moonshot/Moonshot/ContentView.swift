@@ -7,34 +7,17 @@
 
 import SwiftUI
 
-struct Person: Codable {
-    var age: Int
-    var name: Name
-}
-
-struct Name: Codable {
-    var firstName: String
-    var lastName: String
-}
-
 struct ContentView: View {
+    let layout = [
+        GridItem(.adaptive(minimum: 80, maximum: 100))
+    ]
     var body: some View {
-        Button("Decode JSON") {
-            let input = """
-            {
-                "age": 50,
-                "name": {
-                    "firstName": "Groo",
-                    "lastName": "Two"
+        ScrollView {
+            LazyVGrid(columns: layout, content: {
+                ForEach(1..<501) {
+                    Text("number \($0)")
                 }
-            }
-            """
-
-            let data = Data(input.utf8)
-            let decoder = JSONDecoder()
-            if let person = try? decoder.decode(Person.self, from: data) {
-                print(person)
-            }
+            })
         }
     }
 }
