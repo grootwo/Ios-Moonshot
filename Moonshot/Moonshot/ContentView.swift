@@ -7,15 +7,34 @@
 
 import SwiftUI
 
+struct Person: Codable {
+    var age: Int
+    var name: Name
+}
+
+struct Name: Codable {
+    var firstName: String
+    var lastName: String
+}
+
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            List(1..<31) { num in
-                NavigationLink("\(num) view") {
-                    Text("detail of \(num) view")
+        Button("Decode JSON") {
+            let input = """
+            {
+                "age": 50,
+                "name": {
+                    "firstName": "Groo",
+                    "lastName": "Two"
                 }
             }
-            .navigationTitle("Main View")
+            """
+
+            let data = Data(input.utf8)
+            let decoder = JSONDecoder()
+            if let person = try? decoder.decode(Person.self, from: data) {
+                print(person)
+            }
         }
     }
 }
