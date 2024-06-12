@@ -35,12 +35,12 @@ struct ContentView: View {
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(.darkBackground)
+                                .background(.lightBackground)
                             }
                             .clipShape(.rect(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.black, lineWidth: 1)
+                                    .stroke(.lightBackground)
                             )
                         }
                         .padding([.horizontal, .bottom])
@@ -48,6 +48,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Moonshot")
+            .background(.darkBackground)
         }
     }
 }
