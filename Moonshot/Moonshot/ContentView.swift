@@ -28,13 +28,14 @@ struct ContentView: View {
                                     .frame(width: 100, height: 100)
                                 Text(mission.displayName)
                                     .font(.headline)
-                                Text(mission.launchDate ?? "N/A")
+                                Text(mission.formattedLaunchDate)
                                     .font(.caption)
                             }
                         }
                     }
                 }
             }
+            .navigationTitle("Moonshot")
         }
     }
 }
