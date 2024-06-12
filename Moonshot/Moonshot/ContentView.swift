@@ -26,12 +26,24 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
-                                Text(mission.displayName)
-                                    .font(.headline)
-                                Text(mission.formattedLaunchDate)
-                                    .font(.caption)
+                                    .padding()
+                                VStack {
+                                    Text(mission.displayName)
+                                        .font(.headline)
+                                    Text(mission.formattedLaunchDate)
+                                        .font(.caption)
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(.darkBackground)
                             }
+                            .clipShape(.rect(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.black, lineWidth: 1)
+                            )
                         }
+                        .padding([.horizontal, .bottom])
                     }
                 }
             }
