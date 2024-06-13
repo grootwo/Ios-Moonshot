@@ -30,6 +30,34 @@ struct MissionView: View {
                 }
                 .padding()
             }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(crew, id: \.role) { crewMember in
+                        NavigationLink {
+                            Text("Astronaut detail")
+                        } label: {
+                            Image(crewMember.astronaut.id)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(.capsule)
+                                .frame(width: 104, height: 72)
+                                .overlay(
+                                    Capsule()
+                                        .stroke(.white, lineWidth: 1)
+                                )
+                            VStack(alignment: .leading) {
+                                Text(crewMember.astronaut.name)
+                                    .font(.headline)
+                                Text(crewMember.role)
+                                    .font(.caption)
+                            }
+                            .foregroundColor(.white)
+                        }
+                        .padding()
+                    }
+                }
+            }
         }
         .navigationTitle(mission.displayName)
         .navigationBarTitleDisplayMode(.inline)
