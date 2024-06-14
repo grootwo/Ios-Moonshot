@@ -24,10 +24,7 @@ struct MissionView: View {
                         width * 0.6
                     }
                 VStack(alignment: .leading) {
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundColor(.lightBackground)
-                        .padding(.vertical)
+                    CustomDividerView()
                     HStack(alignment: .bottom) {
                         Text(mission.displayName)
                             .font(.largeTitle.bold())
@@ -36,10 +33,7 @@ struct MissionView: View {
                             .foregroundStyle(.secondary)
                     }
                     Text(mission.description)
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundColor(.lightBackground)
-                        .padding(.vertical)
+                    CustomDividerView()
                     Text("Crew")
                         .font(.largeTitle.bold())
                 }
