@@ -30,6 +30,9 @@ struct CrewMemberView: View {
     }
 }
 
-//#Preview {
-//    CrewMemberView()
-//}
+#Preview {
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    return CrewMemberView(crewMember: astronauts["aldrin"]!, role: "role example")
+        .preferredColorScheme(.dark)
+}
