@@ -28,10 +28,14 @@ struct MissionView: View {
                         .frame(height: 2)
                         .foregroundColor(.lightBackground)
                         .padding(.vertical)
-                    Text(mission.displayName)
-                        .font(.largeTitle.bold())
+                    HStack(alignment: .bottom) {
+                        Text(mission.displayName)
+                            .font(.largeTitle.bold())
+                        Text(mission.launchDate?.formatted(date: .abbreviated, time: .omitted) ?? "N/A")
+                            .font(.title3)
+                            .foregroundStyle(.secondary)
+                    }
                     Text(mission.description)
-                    
                     Rectangle()
                         .frame(height: 2)
                         .foregroundColor(.lightBackground)
