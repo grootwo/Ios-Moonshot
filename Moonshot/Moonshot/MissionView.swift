@@ -39,29 +39,13 @@ struct MissionView: View {
                 }
                 .padding()
             }
-            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(crew, id: \.role) { crewMember in
                         NavigationLink {
                             AstronautView(astronaut: crewMember.astronaut)
                         } label: {
-                            Image(crewMember.astronaut.id)
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(.capsule)
-                                .frame(width: 104, height: 72)
-                                .overlay(
-                                    Capsule()
-                                        .stroke(.white, lineWidth: 1)
-                                )
-                            VStack(alignment: .leading) {
-                                Text(crewMember.astronaut.name)
-                                    .font(.headline)
-                                Text(crewMember.role)
-                                    .font(.caption)
-                            }
-                            .foregroundColor(.white)
+                            CrewMemberView(crewMember: crewMember.astronaut, role: crewMember.role)
                         }
                         .padding()
                     }
