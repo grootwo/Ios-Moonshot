@@ -17,36 +17,37 @@ struct ContentView: View {
         ]
         NavigationStack {
             ScrollView {
-                if isGridView {                    LazyVGrid(columns: columns) {
-                    ForEach(missions) { mission in
-                        NavigationLink {
-                            MissionView(mission: mission, astronauts: astronauts)
-                        } label: {
-                            VStack {
-                                Image(mission.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                    .padding()
+                if isGridView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(missions) { mission in
+                            NavigationLink {
+                                MissionView(mission: mission, astronauts: astronauts)
+                            } label: {
                                 VStack {
-                                    Text(mission.displayName)
-                                        .font(.headline)
-                                    Text(mission.formattedLaunchDate)
-                                        .font(.caption)
+                                    Image(mission.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                        .padding()
+                                    VStack {
+                                        Text(mission.displayName)
+                                            .font(.headline)
+                                        Text(mission.formattedLaunchDate)
+                                            .font(.caption)
+                                    }
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(.lightBackground)
                                 }
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(.lightBackground)
+                                .clipShape(.rect(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.lightBackground)
+                                )
                             }
-                            .clipShape(.rect(cornerRadius: 10))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.lightBackground)
-                            )
+                            .padding([.horizontal, .bottom])
                         }
-                        .padding([.horizontal, .bottom])
                     }
-                }
                 } else {
                     LazyVStack {
                         ForEach(missions) { mission in
