@@ -48,6 +48,7 @@ struct ContentView: View {
                             .padding([.horizontal, .bottom])
                             .accessibilityElement()
                             .accessibilityLabel(mission.displayName)
+                            .accessibilityHint(mission.formattedLaunchDate)
                             .accessibilityAddTraits(.isButton)
                         }
                     }
