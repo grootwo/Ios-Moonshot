@@ -43,6 +43,7 @@ struct MissionView: View {
                 HStack(spacing: 30) {
                     ForEach(crew, id: \.role) { crewMember in
                         NavigationLink("\(crewMember.astronaut.name)", value: crewMember)
+                            .accessibilityAddTraits(.isButton)
                     }
                 }
                 .navigationDestination(for: CrewMember.self) { member in

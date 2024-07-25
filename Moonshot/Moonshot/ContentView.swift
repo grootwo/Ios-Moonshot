@@ -46,6 +46,9 @@ struct ContentView: View {
                                 )
                             }
                             .padding([.horizontal, .bottom])
+                            .accessibilityElement()
+                            .accessibilityLabel(mission.displayName)
+                            .accessibilityAddTraits(.isButton)
                         }
                     }
                 } else {
